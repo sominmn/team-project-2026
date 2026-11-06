@@ -1,0 +1,18 @@
+
+# 원본 CSV 데이터
+Safe119_AI/data/raw/
+Safe119_AI/data/processed/
+
+# Python 임시 파일
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# AI 모델
+*.pkl
+*.joblib
+
+# 환경 변수
+.env
+.streamlit/secrets.toml
