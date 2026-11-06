@@ -1,18 +1,22 @@
-
-# 원본 CSV 데이터
-Safe119_AI/data/raw/
-Safe119_AI/data/processed/
+# 원본 CSV 데이터 (구글 드라이브로 공유, .gitkeep만 유지)
+Safe119_AI/data/raw/*
+!Safe119_AI/data/raw/.gitkeep
+Safe119_AI/data/processed/*
+!Safe119_AI/data/processed/.gitkeep
 
 # Python 임시 파일
 __pycache__/
 *.pyc
 .venv/
 venv/
+.ipynb_checkpoints/
 
 # AI 모델
+Safe119_AI/models/*
+!Safe119_AI/models/.gitkeep
 *.pkl
 *.joblib
 
-# 환경 변수
+# 환경 변수 (비밀번호, API 키)
 .env
 .streamlit/secrets.toml
