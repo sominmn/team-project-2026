@@ -38,7 +38,17 @@ for file in files:
             .astype("string")
             .str.strip()
         )
+        # 행정구역 명칭 변경 통일
+        region_mapping = {
+            "강원도": "강원특별자치도",
+            "전라북도": "전북특별자치도"
+        }
 
+        chunk["발생장소_시"] = (
+            chunk["발생장소_시"]
+            .replace(region_mapping)
+        )
+        
         # 날짜 또는 지역이 없는 행 제외
         valid = chunk.dropna(
             subset=["신고년월일", "발생장소_시"]

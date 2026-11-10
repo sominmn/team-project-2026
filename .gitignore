@@ -20,3 +20,5 @@ Safe119_AI/models/*
 # 환경 변수 (비밀번호, API 키)
 .env
 .streamlit/secrets.toml
+
+Safe119_AI/data/weather/

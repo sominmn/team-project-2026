@@ -1,0 +1,4 @@
+﻿모델,MAE,RMSE
+Previous Month Baseline,272.85,506.54
+Ridge Regression,1336.46,2374.09
+Random Forest,1372.78,2949.31
