@@ -901,3 +901,17 @@ st.caption(
     "데이터 품질 문제의 원인이나 예측 성능에 미친 영향을 "
     "자동으로 판정하지 않습니다."
 )
+
+v3 = BASE_DIR / "reports/v3/signal_region_year.csv"
+if v3.exists():
+    st.subheader("시도·연도별 신호와 예측 오차")
+    rows = pd.read_csv(v3)
+    view_year = st.selectbox("진단 연도", sorted(rows.year.unique(), reverse=True))
+    rows = rows.loc[rows.year.eq(view_year)].copy()
+    rows["alert_rate"] *= 100
+    st.scatter_chart(rows, x="alert_rate", y="excess_mae", x_label="경보율(%)", y_label="RF의 기준선 초과 MAE")
+    st.dataframe(rows[["region", "months", "usable", "alerts", "alert_rate", "mae", "baseline_mae"]].rename(columns={
+        "region": "시도", "months": "평가 월", "usable": "판정 가능 월", "alerts": "경보 월",
+        "alert_rate": "경보율(%)", "mae": "RF MAE", "baseline_mae": "전월 기준 MAE",
+    }), hide_index=True)
+    st.caption("후향 평가입니다. 지역별 결과는 전국 공통 분류 변화의 영향을 공유할 수 있습니다.")
