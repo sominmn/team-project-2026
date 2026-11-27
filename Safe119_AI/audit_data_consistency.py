@@ -44,6 +44,8 @@ for year in YEARS:
     invalid_date = 0
     wrong_year = 0
     missing_region = 0
+    seen_rows = set()
+    duplicate_rows = 0
 
     reader = pd.read_csv(
         path,
@@ -64,6 +66,12 @@ for year in YEARS:
             raise ValueError(
                 f"{year}년 필수 컬럼 없음: {missing}"
             )
+
+        hashes = pd.util.hash_pandas_object(chunk, index=False)
+        for row_hash in hashes:
+            if row_hash in seen_rows:
+                duplicate_rows += 1
+            seen_rows.add(row_hash)
 
         total += len(chunk)
 
@@ -104,6 +112,7 @@ for year in YEARS:
     year_stats.append({
         "연도": year,
         "원본행수": total,
+        "동일행중복": duplicate_rows,
         "사고원인결측": int(missing_cause),
         "세부유형결측": int(missing_detail),
         "날짜파싱실패": int(invalid_date),
