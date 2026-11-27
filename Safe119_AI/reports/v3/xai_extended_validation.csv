@@ -1,0 +1,3 @@
+﻿weather,train_rows,test_rows,mae,reference_max_abs_diff,reference_matches,shap_additivity_max_error
+False,816,204,1070.5232809453616,3.637978807091713e-12,True,5.820766091346741e-11
+True,816,204,1186.1672828616101,3.637978807091713e-12,True,1.2369127944111824e-10

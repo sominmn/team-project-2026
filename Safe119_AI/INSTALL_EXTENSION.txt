@@ -1,0 +1,14 @@
+Safe119 extension for integration/safe119-v3 (commit 1333655)
+
+Extract into the Safe119_AI project root, NOT its parent.
+Only NEW files are included. Existing project code is not overwritten.
+
+Optional reproduction:
+  python evaluate_resource_allocation.py
+  python evaluate_xai_extension.py
+
+Run the existing application:
+  python -m streamlit run app/app.py --server.port 8502
+
+New pages: 5 (XAI), 6 (resource allocation).
+Precomputed CSV files included. See reports/v3/EXTENSION_RESULTS.md.
